@@ -24,6 +24,7 @@ function Todo() {
 
   const handleReset = () => {
     setTodos([]);
+    setText("")
   };
 
   return (
@@ -35,7 +36,7 @@ function Todo() {
         <div className='card-body'>
           <div className='input-group mb-3'>
             <input type='text' className='form-control' placeholder='Enter Input' value={text} onChange={(e) => setText(e.target.value)} />
-            <button className='btn btn-success' type='button' onClick={handleAddTodo}>
+            <button className='btn btn-success' type='button' onClick={handleAddTodo} disabled={!text}>
               Add
             </button>
           </div>
@@ -57,7 +58,7 @@ function Todo() {
                     </label>
                   </div>
                   <div>
-                    <button className='btn btn-primary btn-sm me-2' onClick={() => handleEditTodo(index, prompt('Edit todo', todo))}>
+                    <button className='btn btn-primary btn-sm me-2' onClick={() => handleEditTodo(index, prompt('Edit todo', todo))} >
                       Edit
                     </button>
                     <button className='btn btn-danger btn-sm' onClick={() => handleDeleteTodo(index)}>
