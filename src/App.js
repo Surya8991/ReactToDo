@@ -3,9 +3,10 @@ import Todo from './Components/ToDo';
 
 function App() {
   return (
-    <>
-      <h1 style={{textAlign:"center"}}>To Do</h1>
+    <><div className='container my-3'>
+      <h1 style={{textAlign:"center"}}>Employee DataBase</h1>
       <Todo/>
+     </div>
     </>
   );
 }
