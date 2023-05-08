@@ -1,27 +1,36 @@
 import React, { useState } from 'react';
 
 function Todo() {
+  //Handles text Change events
   const [text, setText] = useState('');
+  const [date, setDate] = useState("")
+  // Store the Task
   const [todos, setTodos] = useState([]);
 
+  // Add new tasks
   const handleAddTodo = () => {
     if (!text) return;
-    setTodos([...todos, text]);
+    const newTodos=`${text} ,By ${date}`
+    setTodos([...todos, newTodos]);
     setText('');
+    setDate(new Date()); //
   };
 
+  // Delete tasks
   const handleDeleteTodo = (index) => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
     setTodos(newTodos);
   };
 
+  // Edit tasks
   const handleEditTodo = (index, value) => {
     const newTodos = [...todos];
     newTodos[index] = value;
     setTodos(newTodos);
   };
 
+  // Reset Tasks
   const handleReset = () => {
     setTodos([]);
     setText("")
@@ -35,7 +44,12 @@ function Todo() {
         </div>
         <div className='card-body'>
           <div className='input-group mb-3'>
-            <input type='text' className='form-control' placeholder='Enter Input' value={text} onChange={(e) => setText(e.target.value)} />
+            
+            {/* Inputs */}
+            <input type='text' className='form-control' placeholder='Enter Task' value={text} onChange={(e) => setText(e.target.value)} />
+            <input type='date' className='form-control' placeholder='Compelte Task by' value={date} onChange={(e) => setDate(e.target.value)} />
+           
+            {/* Buttons */}
             <button className='btn btn-success' type='button' onClick={handleAddTodo} disabled={!text}>
               Add
             </button>
@@ -48,6 +62,8 @@ function Todo() {
                 </button>
               </div>
             </li>
+
+            {/* To Show the tasks */}
             {todos.length ? (
               todos.map((todo, index) => (
                 <li className='list-group-item d-flex justify-content-between align-items-center' key={index}>
@@ -58,6 +74,7 @@ function Todo() {
                     </label>
                   </div>
                   <div>
+                    {/* Button for each Task */}
                     <button className='btn btn-primary btn-sm me-2' onClick={() => handleEditTodo(index, prompt('Edit todo', todo))} >
                       Edit
                     </button>
