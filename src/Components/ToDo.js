@@ -40,7 +40,7 @@ function Todo() {
     <div className='container my-5'>
       <div className='card'>
         <div className='card-header bg-primary text-white'>
-          <h3 className='card-title'>Todo List</h3>
+          <h3 className='card-title text-center'>Todo List</h3>
         </div>
         <div className='card-body'>
           <div className='input-group mb-3'>
@@ -89,6 +89,7 @@ function Todo() {
                 <p>No tasks found</p>
               </div>
             )}
+            {/* Task Ends */}
           </ul>
         </div>
       </div>
